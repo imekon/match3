@@ -110,6 +110,7 @@ procedure TMainForm.OnPaintBoxDown(Sender: TObject; Button: TMouseButton;
 begin
   _cursorX := X div BackgroundSize;
   _cursorY := Y div BackgroundSize;
+  _game.SetClick(_cursorX, _cursorY);
   PaintBox.Refresh;
 end;
 
