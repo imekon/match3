@@ -135,7 +135,7 @@ var
   lookX: integer;
 
 begin
-  for lookX := x to x + count do
+  for lookX := x to x + count - 1 do
     map[lookX, y] := -1;
 end;
 
@@ -144,7 +144,7 @@ var
   lookY: integer;
 
 begin
-  for lookY := y to y + count do
+  for lookY := y to y + count - 1 do
     map[x, lookY] := -1;
 end;
 

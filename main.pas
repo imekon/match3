@@ -14,8 +14,6 @@ type
 
   TMainForm = class(TForm)
     BackgroundList: TImageList;
-    StopButton: TButton;
-    RunButton: TButton;
     ControlList: TImageList;
     JewelList: TImageList;
     PaintBox: TPaintBox;
@@ -25,8 +23,6 @@ type
     procedure OnPaintBoxDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure OnPaintBoxDraw(Sender: TObject);
-    procedure OnRunClick(Sender: TObject);
-    procedure OnStopClick(Sender: TObject);
     procedure OnTickTimer(Sender: TObject);
   private
     _game: TGame;
@@ -76,16 +72,6 @@ begin
       0);
 end;
 
-procedure TMainForm.OnRunClick(Sender: TObject);
-begin
-  TickTimer.Enabled := true;
-end;
-
-procedure TMainForm.OnStopClick(Sender: TObject);
-begin
-  TickTimer.Enabled := false;
-end;
-
 procedure TMainForm.OnTickTimer(Sender: TObject);
 begin
   Process;
@@ -109,6 +95,8 @@ begin
 
   _cursorX := -1;
   _cursorY := -1;
+
+  TickTimer.Enabled := true;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
