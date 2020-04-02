@@ -18,6 +18,24 @@ object MainForm: TMainForm
     OnMouseDown = OnPaintBoxDown
     OnPaint = OnPaintBoxDraw
   end
+  object RunButton: TButton
+    Left = 24
+    Height = 25
+    Top = 582
+    Width = 75
+    Caption = 'Run'
+    OnClick = OnRunClick
+    TabOrder = 0
+  end
+  object StopButton: TButton
+    Left = 112
+    Height = 25
+    Top = 582
+    Width = 75
+    Caption = 'Stop'
+    OnClick = OnStopClick
+    TabOrder = 1
+  end
   object JewelList: TImageList
     Height = 48
     Width = 48

@@ -5,7 +5,8 @@ unit main;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, game;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
+  game;
 
 type
 
@@ -13,6 +14,8 @@ type
 
   TMainForm = class(TForm)
     BackgroundList: TImageList;
+    StopButton: TButton;
+    RunButton: TButton;
     ControlList: TImageList;
     JewelList: TImageList;
     PaintBox: TPaintBox;
@@ -22,6 +25,8 @@ type
     procedure OnPaintBoxDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure OnPaintBoxDraw(Sender: TObject);
+    procedure OnRunClick(Sender: TObject);
+    procedure OnStopClick(Sender: TObject);
     procedure OnTickTimer(Sender: TObject);
   private
     _game: TGame;
@@ -71,6 +76,16 @@ begin
       0);
 end;
 
+procedure TMainForm.OnRunClick(Sender: TObject);
+begin
+  TickTimer.Enabled := true;
+end;
+
+procedure TMainForm.OnStopClick(Sender: TObject);
+begin
+  TickTimer.Enabled := false;
+end;
+
 procedure TMainForm.OnTickTimer(Sender: TObject);
 begin
   Process;
@@ -99,7 +114,7 @@ end;
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
   TickTimer.Enabled := false;
-  _game.Free;
+  FreeAndNil(_game);
 end;
 
 procedure TMainForm.OnPaintBoxDown(Sender: TObject; Button: TMouseButton;
