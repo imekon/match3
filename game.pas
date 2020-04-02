@@ -25,6 +25,7 @@ type
   public
     constructor Create;
     procedure Initialise;
+    function Process: boolean;
 
     function GetMapItem(x, y: integer): integer;
   end;
@@ -51,6 +52,24 @@ begin
   for y := 0 to 7 do
     for x := 0 to 7 do
       _map[x, y] := random(8);
+end;
+
+function TGame.Process: boolean;
+var
+  x, y: integer;
+  rightMap, downMap: TGameMap;
+
+begin
+  for y := 0 to 7 do
+    for x := 0 to 7 do
+    begin
+      rightMap[x, y] := 0;
+      downMap[x, y] := 0;
+    end;
+
+  Look(_map, rightMap, downMap);
+  DeleteItems(_map, rightMap, downMap);
+  result := false;
 end;
 
 function TGame.GetMapItem(x, y: integer): integer;
