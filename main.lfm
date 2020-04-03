@@ -12,11 +12,27 @@ object MainForm: TMainForm
   LCLVersion = '2.0.6.0'
   object PaintBox: TPaintBox
     Left = 56
-    Height = 513
+    Height = 520
     Top = 48
-    Width = 512
+    Width = 520
     OnMouseDown = OnPaintBoxDown
     OnPaint = OnPaintBoxDraw
+  end
+  object ScoreLabel: TLabel
+    Left = 24
+    Height = 23
+    Top = 584
+    Width = 60
+    Caption = 'Score:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
   end
   object JewelList: TImageList
     Height = 48
@@ -2838,7 +2854,7 @@ object MainForm: TMainForm
   end
   object TickTimer: TTimer
     Enabled = False
-    Interval = 300
+    Interval = 700
     OnTimer = OnTickTimer
     left = 584
     top = 124

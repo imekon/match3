@@ -16,6 +16,7 @@ type
     BackgroundList: TImageList;
     ControlList: TImageList;
     JewelList: TImageList;
+    ScoreLabel: TLabel;
     PaintBox: TPaintBox;
     TickTimer: TTimer;
     procedure FormCreate(Sender: TObject);
@@ -43,7 +44,7 @@ implementation
 { TMainForm }
 
 const
-  BackgroundSize = 63;
+  BackgroundSize = 65;
 
 procedure TMainForm.OnPaintBoxDraw(Sender: TObject);
 const
@@ -75,6 +76,7 @@ end;
 procedure TMainForm.OnTickTimer(Sender: TObject);
 begin
   Process;
+  ScoreLabel.Caption := 'Score: ' + IntToStr(_game.Score);
   PaintBox.Refresh;
 end;
 
