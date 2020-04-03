@@ -8,7 +8,7 @@ uses
   Classes, SysUtils;
 
 const
-  Scores: array [0..7] of integer = (1, 2, 5, 10, 20, 50, 100, 200);
+  Scores: array [0..7] of integer = (1, 2, 5, 10, 15, 20, 25, 50);
 
 type
   TGameMap = array [0..7, 0..7] of integer;
@@ -109,9 +109,10 @@ begin
   DeleteItems(_map, rightMap, downMap);
   DropDown(_map);
   active := FillAtTop(_map);
-  if _swapped and not active then
+  if _swapped then
   begin
-    Unswap(_map);
+    if not active then
+      Unswap(_map);
     SetIdle;
   end;
   result := false;
@@ -208,7 +209,7 @@ begin
     if (lookY >= 0) and (lookY < 8) then
     begin
       item := map[x, lookY];
-      if item <> - 1 then
+      if item <> -1 then
         inc(_score, Scores[item]);
       map[x, lookY] := -1;
     end;
@@ -316,6 +317,9 @@ var
 
 begin
   _swapped := false;
+
+  if (_firstX = -1) or (_firstY = -1) or (_secondX = -1) or (_secondY = -1) then exit;
+
   item1 := map[_firstX, _firstY];
   item2 := map[_secondX, _secondY];
 
