@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  game;
+  ComCtrls, game;
 
 type
 
@@ -16,8 +16,10 @@ type
     BackgroundList: TImageList;
     ControlList: TImageList;
     JewelList: TImageList;
+    TimeBar: TProgressBar;
     ScoreLabel: TLabel;
     PaintBox: TPaintBox;
+    TimeLabel: TLabel;
     TickTimer: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);

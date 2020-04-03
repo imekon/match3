@@ -8,7 +8,7 @@ uses
   Classes, SysUtils;
 
 const
-  Scores: array [0..7] of integer = (1, 2, 5, 10, 15, 20, 25, 50);
+  Scores: array [0..8] of integer = (1, 2, 5, 10, 15, 20, 25, 50, 75);
 
 type
   TGameMap = array [0..7, 0..7] of integer;
@@ -57,6 +57,9 @@ implementation
 
 { TGame }
 
+const
+  MaxJewelIndex = 9;
+
 constructor TGame.Create;
 var
   x, y: integer;
@@ -88,7 +91,7 @@ begin
 
   for y := 0 to 7 do
     for x := 0 to 7 do
-      _map[x, y] := random(8);
+      _map[x, y] := random(MaxJewelIndex);
 end;
 
 function TGame.Process: boolean;
@@ -268,7 +271,7 @@ begin
   begin
     if map[x, 0] = -1 then
     begin
-      map[x, 0] := random(8);
+      map[x, 0] := random(MaxJewelIndex);
       result := true;
     end;
   end;
