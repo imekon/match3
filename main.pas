@@ -15,6 +15,7 @@ type
   TMainForm = class(TForm)
     BackgroundList: TImageList;
     ControlList: TImageList;
+    Image1: TImage;
     JewelList: TImageList;
     TimeBar: TProgressBar;
     ScoreLabel: TLabel;
@@ -47,6 +48,7 @@ implementation
 
 const
   BackgroundSize = 65;
+  MaxDimension = 7;
 
 procedure TMainForm.OnPaintBoxDraw(Sender: TObject);
 const
@@ -56,11 +58,11 @@ var
   x, y, item: integer;
 
 begin
-  for y := 0 to 7 do
+  for y := 0 to MaxDimension do
   begin
-    for x := 0 to 7 do
+    for x := 0 to MaxDimension do
     begin
-      BackgroundList.Draw(PaintBox.Canvas, x * BackgroundSize, y * BackgroundSize, 0);
+      //BackgroundList.Draw(PaintBox.Canvas, x * BackgroundSize, y * BackgroundSize, 0);
       item := _game.GetMapItem(x, y);
       if item <> -1 then
         JewelList.Draw(PaintBox.Canvas,

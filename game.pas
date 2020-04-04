@@ -8,7 +8,7 @@ uses
   Classes, SysUtils;
 
 const
-  Scores: array [0..8] of integer = (1, 2, 5, 10, 15, 20, 25, 50, 75);
+  Scores: array [0..9] of integer = (1, 2, 5, 10, 15, 20, 25, 50, 75, 100);
 
 type
   TGameMap = array [0..7, 0..7] of integer;
@@ -273,7 +273,11 @@ begin
   begin
     if map[x, 0] = -1 then
     begin
-      map[x, 0] := random(MaxJewelIndex);
+      if random(100) > 90 then
+        map[x, 0] := 9
+      else
+        map[x, 0] := random(MaxJewelIndex);
+
       result := true;
     end;
   end;
