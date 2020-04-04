@@ -140,6 +140,7 @@ var
   starting, count, lookX: integer;
 
 begin
+  result := 0;
   if x > 5 then exit;
 
   count := 1;
@@ -160,6 +161,7 @@ var
   starting, count, lookY: integer;
 
 begin
+  result := 0;
   if y > 5 then exit;
 
   count := 1;
